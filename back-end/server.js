@@ -1,11 +1,13 @@
 const express = require("express");
 const pool = require("./db")
+const cors = require("cors");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const verifyToken = require("./middleware/verifyToken")
 const { generateToken, generateRefreshToken } = require("./auth");
 const path = require("path");
 const app = express();
+app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "../front-end")));
 
@@ -35,7 +37,10 @@ app.post("/posts", verifyToken, async (req, res) => {
 app.get("/posts", verifyToken, async (req, res) =>{
     try{
         const result = await pool.query(
-            "SELECT * FROM posts ORDER BY created_at DESC"
+            `SELECT posts.id, posts.text, posts.created_at, users.username
+            FROM posts
+            JOIN users ON posts.user_id = users.id
+            ORDER BY posts.created_at DESC`
         );
         res.json(result.rows);
     }
