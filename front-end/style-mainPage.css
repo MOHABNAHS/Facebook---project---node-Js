@@ -1,0 +1,341 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+
+    background: #f4f5f7;
+    color: #111827;
+
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+
+    padding: 50px 20px;
+}
+
+
+/* =========================
+   AUTH
+========================= */
+
+h1 {
+    width: 100%;
+    max-width: 400px;
+
+    margin-bottom: 15px;
+
+    font-size: 24px;
+    font-weight: 600;
+}
+
+form {
+    width: 100%;
+    max-width: 400px;
+
+    background: #ffffff;
+
+    padding: 25px;
+    margin-bottom: 35px;
+
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.04);
+
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+
+/* =========================
+   INPUTS
+========================= */
+
+input,
+textarea {
+    width: 100%;
+
+    padding: 13px 14px;
+
+    background: #fafafa;
+
+    border: 1px solid #d1d5db;
+    border-radius: 9px;
+
+    color: #111827;
+
+    font-size: 15px;
+    font-family: Arial, sans-serif;
+
+    outline: none;
+
+    transition:
+        border-color 0.2s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+input:focus,
+textarea:focus {
+    background: #ffffff;
+
+    border-color: #9ca3af;
+
+    box-shadow: 0 0 0 3px rgba(17, 24, 39, 0.05);
+}
+
+
+/* =========================
+   TEXTAREA
+========================= */
+
+textarea {
+    min-height: 110px;
+
+    resize: vertical;
+
+    line-height: 1.6;
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+button {
+    border: none;
+    border-radius: 9px;
+
+    padding: 12px 20px;
+
+    background: #111827;
+    color: #ffffff;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+button:hover {
+    background: #1f2937;
+
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 8px 20px rgba(17, 24, 39, 0.15);
+}
+
+button:active {
+    transform: translateY(0);
+
+    box-shadow: none;
+}
+
+
+/* =========================
+   HOME PAGE
+========================= */
+
+.home {
+    width: 100%;
+    max-width: 600px;
+}
+
+.home h1 {
+    max-width: none;
+
+    margin-bottom: 20px;
+
+    font-size: 28px;
+    font-weight: 700;
+}
+
+
+/* =========================
+   CREATE POST
+========================= */
+
+#postForm {
+    max-width: none;
+
+    margin-bottom: 25px;
+
+    padding: 20px;
+}
+
+
+/* =========================
+   POSTS
+========================= */
+
+#postsContainer {
+    display: flex;
+    flex-direction: column;
+
+    gap: 15px;
+}
+
+.post {
+    background: #ffffff;
+
+    padding: 20px;
+
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.04);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.post:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.07);
+}
+
+
+/* =========================
+   POST HEADER
+========================= */
+
+.post-header {
+    display: flex;
+    align-items: center;
+
+    margin-bottom: 14px;
+}
+
+.post-avatar {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #e5e7eb;
+
+    border-radius: 50%;
+
+    margin-right: 11px;
+
+    color: #374151;
+
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.post-user {
+    font-size: 15px;
+    font-weight: 600;
+
+    color: #111827;
+}
+
+.post-date {
+    margin-top: 4px;
+
+    font-size: 12px;
+
+    color: #9ca3af;
+}
+
+
+/* =========================
+   POST CONTENT
+========================= */
+
+.post-text {
+    color: #374151;
+
+    font-size: 15px;
+
+    line-height: 1.7;
+
+    word-break: break-word;
+}
+
+
+/* =========================
+   POST ACTIONS
+========================= */
+
+.post-actions {
+    display: flex;
+    gap: 8px;
+
+    margin-top: 17px;
+    padding-top: 13px;
+
+    border-top: 1px solid #f0f0f0;
+}
+
+.post-actions button {
+    padding: 8px 14px;
+
+    background: #f9fafb;
+    color: #4b5563;
+
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+
+    font-size: 13px;
+    font-weight: 500;
+
+    box-shadow: none;
+
+    transform: none;
+}
+
+.post-actions button:hover {
+    background: #f3f4f6;
+
+    color: #111827;
+
+    border-color: #d1d5db;
+
+    box-shadow: none;
+
+    transform: none;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 600px) {
+
+    body {
+        padding: 30px 15px;
+    }
+
+    .home h1 {
+        font-size: 24px;
+    }
+
+    form {
+        padding: 20px;
+    }
+
+    .post {
+        padding: 17px;
+    }
+}
