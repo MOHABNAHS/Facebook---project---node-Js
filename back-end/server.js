@@ -263,13 +263,34 @@ app.post("/comments", verifyToken, async (req, res) =>{
     catch(error){
         console.log(error);
         res.status(500).json({
-            message: "[ERROR][POST] comments"
+            error: "[ERROR][POST] comments"
         })
     }
 })
 
 
+// [GET] comments
+app.get("/comments", verifyToken, async(req, res =>{
+    try{
+        const { post_id } = req.params;
 
+        const result = await pool.query(
+            `SELECT comments.id, comments.text, comments.created_at, users.username
+             FROM comments
+             JOIN users ON comments.user_id = users.id
+             WHERE comments.post_id = $1
+             ORDER BY comments.created_at ASC`,
+            [post_id]
+        );
+        res.json(result.rows)
+    }
+    catch(error){
+        console.log(error);
+        res.status(500).json({
+            error: "[ERROR][GET] comments"
+        })
+    }
+}))
 
 
 
