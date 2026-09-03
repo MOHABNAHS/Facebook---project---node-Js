@@ -248,6 +248,29 @@ app.post("/refresh", (req, res) => {
     }
 });
 
+// [POST] comments
+app.post("/comments", verifyToken, async (req, res) =>{
+    try{
+        const { text, post_id } = req.body;
+        const user_id = req.user.id;
+
+        const result = await pool.query(
+            "INSERT INTO comments (text, user_id, post_id) VALUES ($1, $2, $3) RETURNING *",
+            [text, user_id, post_id]
+        )
+        res.status(201).json({result.rows[0]});
+    }
+    catch(error){
+        console.log(error);
+        res.status(500).json({
+            message: "[ERROR][POST] comments"
+        })
+    }
+})
+
+
+
+
 
 
 app.listen(5000, ()=>{
