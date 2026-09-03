@@ -258,7 +258,7 @@ app.post("/comments", verifyToken, async (req, res) =>{
             "INSERT INTO comments (text, user_id, post_id) VALUES ($1, $2, $3) RETURNING *",
             [text, user_id, post_id]
         )
-        res.status(201).json({result.rows[0]});
+        res.status(201).json(result.rows[0]);
     }
     catch(error){
         console.log(error);
@@ -270,17 +270,19 @@ app.post("/comments", verifyToken, async (req, res) =>{
 
 
 // [GET] comments
-app.get("/comments", verifyToken, async(req, res =>{
+app.get("/comments", verifyToken, async(req, res) =>{
     try{
-        const { post_id } = req.params;
 
         const result = await pool.query(
-            `SELECT comments.id, comments.text, comments.created_at, users.username
-             FROM comments
-             JOIN users ON comments.user_id = users.id
-             WHERE comments.post_id = $1
-             ORDER BY comments.created_at ASC`,
-            [post_id]
+            `SELECT comments.id,
+                comments.text,
+                comments.created_at,
+                comments.user_id,
+                comments.post_id,
+                users.username
+            FROM comments
+            JOIN users ON comments.user_id = users.id
+            ORDER BY comments.created_at ASC`
         );
         res.json(result.rows)
     }
@@ -290,7 +292,7 @@ app.get("/comments", verifyToken, async(req, res =>{
             error: "[ERROR][GET] comments"
         })
     }
-}))
+})
 
 
 
